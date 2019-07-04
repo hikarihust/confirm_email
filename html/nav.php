@@ -21,7 +21,7 @@
 
     $xhtmlMenu = '<ul class="nav navbar-nav">';
     foreach($menus as $key => $menu){
-        if($key == $currentFile) $menu['class'] = "active";
+        if($key === $currentFile) $menu['class'] = "active";
         $xhtmlMenu .= '<li class="'.$menu['class'].'"><a href="'.$menu['link'].'">'.$menu['name'].'</a></li>';  
     }
     $xhtmlMenu .= '</ul>';  
@@ -31,7 +31,7 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Demo Google Authenticator</a>
+            <a class="navbar-brand" href="#">Demo Email Confirmation</a>
         </div>
         <?php echo $xhtmlMenu; ?>
     </div>

@@ -10,3 +10,8 @@
 - Login Setting Logout:
 	Khi đã đăng nhập rồi mà vẫn cố tình vào trang login thì sẽ tự động redirect sang trang setting
 	Nếu chưa đăng nhập mà vẫn cố tình vào trang setting thì sẽ tự động redirect về trang login
+
+- Navigation:
+	Nếu đã đăng nhập rồi thì không hiển thị Navigation cho Login và Register
+	Chưa đăng nhập thì không hiển thị Setting là logout
+	Kiểm tra nếu mà file đang thực thi nó bằng key nào trong menus thì sẽ active menu đó
