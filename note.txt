@@ -24,3 +24,14 @@
     email thì mới Login thành công
   Sau khi vào email và click vào link đăng nhập thành công -> logout rồi tiếp tục thực hiện click vào link đăng nhập 
    trong email 1 lần nữa thì sẽ không thể đăng nhập được 1 lần nữa
+- Setting:
+	Sau khi đăng ký thành viên thì ngoài việc lưu thông tin email, pass, fullName thì mình sẽ lưu thêm thông tin của
+    login_key, login_email_confirm(off/on)
+  Khi vừa đăng ký thì login_email_confirm sẽ mang giá trị là off
+  Khi login_email_confirm có giá trị là off thì người dùng chỉ nhập đúng email và pass là người dùng có thể đăng nhập được
+  Khi login_email_confirm có giá trị là on thì ngoài việc đúng email và password thì có 1 link gửi đến tài khoản email và
+    người sử dụng phải click và link đó để đăng nhập
+  Khi vào màn hình setting thì từ giá trị của trường login_email_confirm là on hay là off thì từ đó sẽ active cho radio
+    xác nhận đăng nhập qua email là Yes hay là No
+  Khi người dùng chọn giá trị xác nhận đăng nhập mật khẩu qua email là Yes/No rồi sau đó submit form thì từ giá trị đó cập
+    nhật lại giá trị của trường login_email_confirm

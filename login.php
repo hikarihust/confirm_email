@@ -12,8 +12,13 @@
       $data = json_decode(file_get_contents(DATA_USER), TRUE);
         $userInfo = $data[$email];
         if (($userInfo['email'] === $email) && ($userInfo['password'] === $password)) {
-          Session::set('email', $email);
-          URL::redirect('setting.php');
+          if ($userInfo['login_email_confirm'] === 'on') {
+            echo "Dang xu ly";
+            die();
+          } else {
+            Session::set('email', $email);
+            URL::redirect('setting.php');
+          }
         } else {
           $error = 'Login is failed';
         }
