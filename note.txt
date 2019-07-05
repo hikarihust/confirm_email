@@ -35,3 +35,9 @@
     xác nhận đăng nhập qua email là Yes hay là No
   Khi người dùng chọn giá trị xác nhận đăng nhập mật khẩu qua email là Yes/No rồi sau đó submit form thì từ giá trị đó cập
     nhật lại giá trị của trường login_email_confirm
+- Link:
+  Thực hiện cho trường hợp login_email_confirm là on
+  Trên link thì truyền thêm biến $time để lưu lại nay thời điểm mà user yêu cầu đăng nhập, để dựa vào time đó để biết được
+    link đó có còn time để xử dụng hay không để tránh trường hợp người dùng click vào link cũ
+  Tại thời điểm login thì lưu thêm cả time mà người dùng đang yêu cầu login
+  Link được gửi qua email cho người sử dụng lưu lại login_key và login_time vào trong Database

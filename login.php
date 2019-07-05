@@ -13,8 +13,15 @@
         $userInfo = $data[$email];
         if (($userInfo['email'] === $email) && ($userInfo['password'] === $password)) {
           if ($userInfo['login_email_confirm'] === 'on') {
-            echo "Dang xu ly";
-            die();
+            $userInfo['login_key'] = substr(md5(SECRET_KEY . time()), 1, 10);
+            $userInfo['login_time'] = time();
+
+            $data[$email] = $userInfo;
+            file_put_contents(DATA_USER, json_encode($data));
+
+            echo $linkConfirm = Utils::createLinkConfirmLogin($userInfo);
+
+            die("dang xu ly");
           } else {
             Session::set('email', $email);
             URL::redirect('setting.php');
