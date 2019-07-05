@@ -15,3 +15,12 @@
 	Nếu đã đăng nhập rồi thì không hiển thị Navigation cho Login và Register
 	Chưa đăng nhập thì không hiển thị Setting là logout
 	Kiểm tra nếu mà file đang thực thi nó bằng key nào trong menus thì sẽ active menu đó
+
+===================================== Confirmation Email - Giải pháp 1 =====================================
+- Demo:
+  Sau khi đăng nhập thành công -> truy cập vào màn hình setting thì việc xác nhận đăng nhập qua email default là No, do 
+    đó việc đăng nhập không cần phải vào email để xác nhận
+  Khi thiết lập là Yes thì khi Login sẽ được gửi đến 1 liên kết đăng nhập qua email, khi click vào link được gửi qua
+    email thì mới Login thành công
+  Sau khi vào email và click vào link đăng nhập thành công -> logout rồi tiếp tục thực hiện click vào link đăng nhập 
+   trong email 1 lần nữa thì sẽ không thể đăng nhập được 1 lần nữa
