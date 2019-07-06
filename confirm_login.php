@@ -11,7 +11,7 @@ $email = isset($_GET['email']) ? $_GET['email'] : '';
 if ($time + EXPIRED_TIME < time()) {
   echo '<h3>Link hết hạn!! Vui lòng đăng nhập lại <a href="login.php">tại đây</a></h3>';
 } else {
-  if ($code === 'aaa111') {
+  if ($code === md5(SECRET_KEY . $time . $email)) {
     $data = json_decode(file_get_contents(DATA_USER), TRUE);
     $userInfo = (isset($data[$email]) && !empty($data[$email])) ? $data[$email] : null;
 

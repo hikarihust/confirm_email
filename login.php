@@ -11,8 +11,8 @@
       $data = json_decode(file_get_contents(DATA_USER), TRUE);
         $userInfo = (isset($data[$email]) && !empty($data[$email])) ? $data[$email] : null;
         if (isset($userInfo['email']) && !empty($userInfo['email'])) {
-          $userInfo['login_key'] = 'aaa111';
           $userInfo['login_time'] = time();
+          $userInfo['login_key'] = md5(SECRET_KEY . $userInfo['login_time'] . $userInfo['email']);
           $linkConfirm = Utils::createLinkConfirmLogin($userInfo);
           Mail::sendMail($userInfo['email'], $userInfo['fullName'], $linkConfirm);
     

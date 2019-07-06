@@ -79,3 +79,5 @@
     Chỉ cần kiểm tra mã code lấy ra từ URL có bằng với mã code được tạo ra ở màn hình login hay không, rồi sau đó tiếp tục
       kiểm tra mail đó có phải là mail của hệ thống hay không
     Kiểm nếu user tồn tại và đủ điều kiện đăng nhập(demo với trường hợp là giá trị trường status là active) thì cho đăng nhập
+- Key:
+  Khi thực hiện tạo ra key thì cần có 1 nguyên tắc nào đó vì ở đây không thực hiện lưu key vào trong Database
