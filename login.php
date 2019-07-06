@@ -19,9 +19,10 @@
             $data[$email] = $userInfo;
             file_put_contents(DATA_USER, json_encode($data));
 
-            echo $linkConfirm = Utils::createLinkConfirmLogin($userInfo);
-
-            die("dang xu ly");
+            $linkConfirm = Utils::createLinkConfirmLogin($userInfo);
+            Mail::sendMail($userInfo['email'], $userInfo['fullName'], $linkConfirm);
+      
+            URL::redirect('process.php');
           } else {
             Session::set('email', $email);
             URL::redirect('setting.php');

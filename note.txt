@@ -41,3 +41,18 @@
     link đó có còn time để xử dụng hay không để tránh trường hợp người dùng click vào link cũ
   Tại thời điểm login thì lưu thêm cả time mà người dùng đang yêu cầu login
   Link được gửi qua email cho người sử dụng lưu lại login_key và login_time vào trong Database
+- Email:
+  Để gửi mail thì sử dụng thư viện là phpmailer
+  link download: https://github.com/PHPMailer/PHPMailer
+  Đối với class Mail thì cần điều chỉnh lại các thông số đó là: Username, Password, setFrom
+  Đối với việc gửi mail mà sử dụng gmail thì cần truy cập vào liên kết: https://myaccount.google.com/lesssecureapps
+    để cho phép các ứng dụng khác được quyền gửi mail(có thể)
+  Trang process: Kiểm tra xem đã đăng nhập chưa? nếu đã đăng nhập rồi thì chuyển thẳng đến trang setting
+  Để khắc phục lỗi "SMTP Error: Could not connect to SMTP host." thì trong Class gửi maill thêm đoạn code sau:
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
