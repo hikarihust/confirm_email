@@ -11,17 +11,16 @@ $email = isset($_GET['email']) ? $_GET['email'] : '';
 if ($time + EXPIRED_TIME < time()) {
   echo '<h3>Link hết hạn!! Vui lòng đăng nhập lại <a href="login.php">tại đây</a></h3>';
 } else {
-  $data = json_decode(file_get_contents(DATA_USER), TRUE);
-  $userInfo = $data[$email];
+  if ($code === 'aaa111') {
+    $data = json_decode(file_get_contents(DATA_USER), TRUE);
+    $userInfo = (isset($data[$email]) && !empty($data[$email])) ? $data[$email] : null;
 
-  if ($userInfo['login_time'] + EXPIRED_TIME < time()) {
-    echo '<h3>Link hết hạn!! Vui lòng đăng nhập lại <a href="login.php">tại đây</a></h3>';
-  } else {
-    if ($userInfo['login_key'] === $code) {
-      Session::set('email', $email);
-      URL::redirect('setting.php');
-    } else {
-      echo '<h3>Thất bại!! Vui lòng đăng nhập lại <a href="login.php">tại đây</a></h3>';
+    if (isset($userInfo['email']) && !empty($userInfo['email'])) {
+      if ($userInfo['status'] === 'active') {
+        Session::set('email', $email);
+        URL::redirect('setting.php');
+      }
     }
-  }
+  } 
+  echo '<h3>Thất bại!! Vui lòng đăng nhập lại <a href="login.php">tại đây</a></h3>';
 }

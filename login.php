@@ -6,34 +6,23 @@
   if(!empty(Session::get('email')))  URL::redirect("setting.php");
   if (!empty($_POST['submit'])) {
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
 
-    if (!empty($email) && !empty($password)) {
+    if (!empty($email)) {
       $data = json_decode(file_get_contents(DATA_USER), TRUE);
-        $userInfo = $data[$email];
-        if (($userInfo['email'] === $email) && ($userInfo['password'] === $password)) {
-          if ($userInfo['login_email_confirm'] === 'on') {
-            $userInfo['login_key'] = substr(md5(SECRET_KEY . time()), 1, 10);
-            $userInfo['login_time'] = time();
-
-            $data[$email] = $userInfo;
-            file_put_contents(DATA_USER, json_encode($data));
-
-            $linkConfirm = Utils::createLinkConfirmLogin($userInfo);
-            Mail::sendMail($userInfo['email'], $userInfo['fullName'], $linkConfirm);
-      
-            URL::redirect('process.php');
-          } else {
-            Session::set('email', $email);
-            URL::redirect('setting.php');
-          }
+        $userInfo = (isset($data[$email]) && !empty($data[$email])) ? $data[$email] : null;
+        if (isset($userInfo['email']) && !empty($userInfo['email'])) {
+          $userInfo['login_key'] = 'aaa111';
+          $userInfo['login_time'] = time();
+          $linkConfirm = Utils::createLinkConfirmLogin($userInfo);
+          Mail::sendMail($userInfo['email'], $userInfo['fullName'], $linkConfirm);
+    
+          URL::redirect('process.php');
         } else {
-          $error = 'Login is failed';
+          $error = 'Email này không tồn tại';
         }
     } else {
       $error = 'Please enter full information';
     }
-    
   }
 ?>
 <!DOCTYPE html>
@@ -57,9 +46,6 @@
                 <fieldset>
                   <div class="form-group">
                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
                   </div>
                   <input name="submit" type="submit" value="Login" class="btn btn-primary">
                 </fieldset>

@@ -66,3 +66,16 @@
 	Tại giai đoạn login thì thay vì người dùng phải nhập email và password thì chỉ cần cho người dùng nhập email,
 		sau khi người dùng nhập email xong thì cũng có 1 link gửi đến địa chỉ email của người dùng -> chỉ cần Click vào link
 		đó là có thể đăng nhập được
+- Confirm:
+  Màn hình setting: Đăng nhập lúc này bắt buộc phải qua email -> không cần setting đăng nhập qua email hay không
+  Ở màn hình login:
+    Khi login thì không cần nhập password
+    Không thực hiện lưu Database
+    Chỉ kiểm tra email được nhập có tồn tại trong Database hay không
+    Kiểm tra email ok thì gửi link đến địa chỉ email của người đó để người đó vào mail và Click vào link để truy cập vào
+      màn hình confirm_login
+  Ở màn hình confirm_login:
+    Kiểm tra tiếp email có hợp nên hay không rồi kiểm link có hợp nệ hay không
+    Chỉ cần kiểm tra mã code lấy ra từ URL có bằng với mã code được tạo ra ở màn hình login hay không, rồi sau đó tiếp tục
+      kiểm tra mail đó có phải là mail của hệ thống hay không
+    Kiểm nếu user tồn tại và đủ điều kiện đăng nhập(demo với trường hợp là giá trị trường status là active) thì cho đăng nhập
