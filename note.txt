@@ -56,3 +56,7 @@
             'allow_self_signed' => true
         )
     );
+- Confirm:
+  Để đề phòng người dùng sử dụng lại link cũ để đăng nhập thì kiểm tra xem link đó có còn hạn hay không
+  Để đề phòng người dùng điều chỉnh giá trị time trên URL thì cần kiểm tra link hết hạn chưa thêm 1 bước nữa bằng cách
+    lấy thực sự time login để so sánh
