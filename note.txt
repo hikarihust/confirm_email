@@ -60,3 +60,9 @@
   Để đề phòng người dùng sử dụng lại link cũ để đăng nhập thì kiểm tra xem link đó có còn hạn hay không
   Để đề phòng người dùng điều chỉnh giá trị time trên URL thì cần kiểm tra link hết hạn chưa thêm 1 bước nữa bằng cách
     lấy thực sự time login để so sánh
+
+===================================== Confirmation Email - Giải pháp 2 =====================================
+- Demo:
+	Tại giai đoạn login thì thay vì người dùng phải nhập email và password thì chỉ cần cho người dùng nhập email,
+		sau khi người dùng nhập email xong thì cũng có 1 link gửi đến địa chỉ email của người dùng -> chỉ cần Click vào link
+		đó là có thể đăng nhập được
